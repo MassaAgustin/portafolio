@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Contact } from '../pages/contact'
+import { Contact } from '../pages/Contact'
 
 export const Navigation = () => {
 

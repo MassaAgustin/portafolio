@@ -1,9 +1,11 @@
+import React, { Fragment } from 'react'
+import { Navigation } from './navigation/Navigation'
 
 function App() {
   return (
-    <div >
-      <h1 >First text</h1>
-    </div>
+    <Fragment >
+      <Navigation />
+    </Fragment>
   );
 }
 

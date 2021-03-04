@@ -1,18 +1,19 @@
 import React, { Fragment } from 'react'
 
-export const contact = () => {
+import { ContactForm } from '../components/ContactForm'
+
+export const Contact = () => {
     return (
         <Fragment>
-        <header>
-            <h1>Te amo pauli uwu</h1>
-        </header>
-        <section>
-            
-        </section>
-        <footer>
-            
-            
-        </footer>
+            <header>
+                <h1>Contactame!</h1>
+            </header>
+            <section>
+                <ContactForm />
+            </section>
+            <footer>
+                <h3>Sigueme en mis redes sociales!</h3>
+            </footer>
         </Fragment>
     )
 }
