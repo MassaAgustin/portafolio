@@ -1,17 +1,19 @@
 import React, { Fragment } from 'react'
 import { Navigation } from './navigation/Navigation'
 
-import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 
 function App() {
   return (
     <Fragment >
-      <div className="container align-items-center justify-content-center" >
-        <Header />
-        <Navigation />
-        <Footer />
-      </div>
+      <div className="container d-flex align-items-center justify-content-center 100-vh" >
+        <div className="row">
+          <Navigation />
+          <div className="col-12">
+            <Footer />
+          </div >
+        </div >
+      </div >
     </Fragment>
   );
 }
