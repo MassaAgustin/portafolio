@@ -1,14 +1,15 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Navigation } from './navigation/Navigation'
 
-import { Footer } from './components/Footer'
+import EmailProvider from './context/Provider'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <Fragment >
-      <Navigation />
-      <Footer />
-    </Fragment>
+      <EmailProvider>
+        <Navigation />
+      </EmailProvider>
   );
 }
 

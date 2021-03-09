@@ -1,66 +1,118 @@
-import React, { Fragment } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useInputValue } from '../customHooks/useInputValue'
 
+import EmailContext from '../context/Context'
+
+import { Container, Form, Row, Col, InputGroup, Button } from 'react-bootstrap'
 
 export const ContactForm = () => {
 
     const name = useInputValue('');
-    const email = useInputValue('');
+    const secondName = useInputValue('')
+    const email = useInputValue();
+    const domain = useInputValue('');
     const description = useInputValue('');
+
+    const [validName, setValidName] = useState(false)
+    const [validEmail, setValidEmail] = useState(false)
+    const [validDomain, setValidDomain] = useState(false)
+
+    let first = true
+
+    const { isSendEmail, toggleSend, sendEmail } = useContext(EmailContext)
+
+    const inputSimple = {
+        md: 12,
+        lg: 6
+    }
+
+    const inputDouble = {
+        md: 6,
+        lg: 3
+    }
+
+    const nextFocus = (event, objId) => {
+        if (event.code == 'Enter') {
+            console.log("presiono enter")
+            const obj = document.getElementById(objId);
+            if (obj)
+                obj.focus();
+        }
+    }
 
     const InputName = () => {
         return (
-            <div className="col-12 col-lg-6">
-                <div className="form-floating mb-3">
-                    <input type="text" className="form-control" id="contactName" {...name} placeholder="Name" />
-                    <label className="form-label" htmlFor="contactName">Name</label>
-                </div>
-            </div>
+            <Row className="mb-3 justify-content-center" >
+                <Col {...inputDouble}>
+                    <Form.Control id="contactName" onKeyPress={(event) => nextFocus(event, 'contactSecond')} placeholder="First name" {...name} isValid={validName ? true : false} isInvalid={(validName || first) ? false : true} />
+                    <Form.Control.Feedback type="invalid">name is required</Form.Control.Feedback>
+                </Col>
+                <Col {...inputDouble}>
+                    <Form.Control id="contactSecond" onKeyPress={(event) => nextFocus(event, 'contactEmail')} placeholder="Second name" {...secondName} />
+                </Col>
+            </Row>
         )
     }
 
     const InputEmail = () => {
         return (
-            <Fragment>
-                <div className="input-group">
-                    <div className="col-12 col-lg-4">
-                        <div className="form-floating">
-                            <input type="email" className="form-control" id="contactEmail" {...email} disabled={name.value ? false : true} placeholder="example" />
-                            <label className="form-label" htmlFor="contactEmail">Email</label>
-                        </div>
-                    </div>
-                    <div className="col-12 col-lg-2">
-                        <div className="form-floating">
-                            <select className="form-select" id="contactSelectEmail" defaultValue={1}>
-                                <option value="1">Select</option>
-                                <option value="2">@gmail.com</option>
-                                <option value="3">@hotmail.com</option>
-                                <option value="4">@yahoo.com</option>
-                            </select>
-                            <label className="form-label" htmlFor="contactSelectEmail">Select</label>
-                        </div>
-                    </div>
-                </div>
-            </Fragment>
+            <Row className="mb-3 justify-content-center" >
+                <Col {...inputDouble}>
+                    <Form.Control id="contactEmail" onKeyPress={(event) => nextFocus(event, 'contactDomain')} placeholder="Enter you email" {...email} isValid={validEmail ? true : false} isInvalid={(validEmail || first) ? false : true} />
+                    <Form.Control.Feedback type="invalid">mail does not exist</Form.Control.Feedback>
+                </Col>
+                <Col {...inputDouble}>
+                    <InputGroup >
+                        <InputGroup.Prepend>
+                            <InputGroup.Text>@</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control id="contactDomain" onKeyPress={(event) => nextFocus(event, 'contactDescription')} type="email" placeholder="any.com" {...domain} isValid={validDomain ? true : false} isInvalid={(!validDomain || first) ? false : true} />
+                        <Form.Control.Feedback type="invalid">@{domain.value} not exist</Form.Control.Feedback>
+                    </InputGroup>
+                </Col>
+            </Row>
         )
     }
 
     const InputDescription = () => {
         return (
-            <div className="col-12 col-lg-6">
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" id="contactDescription" placeholder="Cuentame, que te intereso sobre mi!" style={{ height: "100px" }} {...description} disabled={email.value ? false : true} />
-                    <label className="form-label" htmlFor="contactDescription">Cuentame, que te intereso sobre mi!</label>
-                </div>
-            </div>
+            <Row className="mb-3 justify-content-center" >
+                <Col {...inputSimple}>
+                    <Form.Control id="contactDescription" onKeyPress={(event) => nextFocus(event, 'contactButton')} as="textarea" rows={3} placeholder="Could be any reason" {...description} style={{ resize: "none" }} />
+                </Col>
+            </Row>
         )
     }
 
+    const handleEmail = async () => {
+        const body = {
+            name: name.value,
+            secondName: secondName.value,
+            email: email.value,
+            domain: domain.value,
+            description: description.value
+        }
+        if (name.value) setValidName(true); else setValidName(false)
+        if (email.value) setValidEmail(true); else setValidEmail(false)
+        if (domain.value.includes('com')) setValidDomain(true); else setValidDomain(false)
+        first = true
+        if (validName && validEmail && validDomain)
+            await sendEmail(body)
+    }
+
     return (
-        <form className="row g-3">
-            {InputName()}
-            {InputEmail()}
-            {InputDescription()}
-        </form>
+
+        <Container fluid className="mt-5 justify-content-center">
+            <Form>
+                {InputName()}
+                {InputEmail()}
+                {InputDescription()}
+                <Row className="justify-content-center" >
+                    <Col {...inputSimple}>
+                        <Button id="contactButton" onClick={handleEmail}>Send</Button>
+                    </Col>
+                </Row>
+            </Form>
+        </Container>
     )
 }

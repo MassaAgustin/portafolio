@@ -3,8 +3,8 @@ import React, { Fragment } from 'react'
 export const Home = () => {
     return (
         <Fragment>
-            <label for="homeList" class="form-label">Skill's Search</label>
-            <input class="form-control" list="skillListOption" id="homeList" placeholder="Type to search skill..." />
+            <label htmlFor="homeList" className="form-label">Skill's Search</label>
+            <input className="form-control" list="skillListOption" id="homeList" placeholder="Type to search skill..." />
             <datalist id="skillListOption">
                 <option value="React" />
                 <option value="Redux" />
