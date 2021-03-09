@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
-
+import MainLoader from '../components/MainLoader'
 
 export const AboutMe = () => {
     return (
         <Fragment>
-            <h1>Hello world</h1>
+            <MainLoader />
         </Fragment>
 
     )

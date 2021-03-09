@@ -15,7 +15,7 @@ export const Footer = () => {
     const urlLinkedin = "https://www.linkedin.com/in/agustin-isaac-vera-massa-939548201/";
     const urlTwitter = "https://twitter.com/AgusMassa14";
     const urlInstagram = "https://www.instagram.com/agus.massa1/";
-    const urlOutlook = "mailto:agus.massa@hotmail.com?subject=Interview&body=Hello Agustin Massa,";
+    const urlOutlook = "mailto:agus.massa@hotmail.com?subject=interview&body=Hello Agustin Massa,";
 
     return (
         <Container fluid className="fixed-bottom mb-0 border-top justify-content-center bg-dark">
