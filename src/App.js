@@ -4,7 +4,7 @@ import { Navigation } from './navigation/Navigation'
 import EmailProvider from './context/Provider'
 
 
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 

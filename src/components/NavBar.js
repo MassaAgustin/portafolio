@@ -21,7 +21,7 @@ const DetailsMe = (
 export const NavBar = () => {
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
+        <Navbar collapseOnSelect={true} expand="lg" bg="dark" variant="dark" >
             <Navbar.Brand as={Link} to="/" >Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">

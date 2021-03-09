@@ -9,15 +9,18 @@
 }
 
 .main-loader{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: var(--primary-color);
 }
 
 #logo{
     position: absolute;
+    height: 80%;
+    width: 80%;
     top: 50%;
     left: 50%;
+    pointer-events: none;
     transform: translate(-50%,-50%);
     animation: fill 0.5s forwards 6s;
 }
