@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-export const Home = () => {
+export const Projects = () => {
     return (
         <Fragment>
             <label htmlFor="homeList" className="form-label">Skill's Search</label>

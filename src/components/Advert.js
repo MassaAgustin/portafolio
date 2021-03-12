@@ -11,7 +11,7 @@ export const Advert = (props) => {
         setIsNotify(false)
     }
 
-    const { mode, text, text2, textHead, textFoot, ...rest } = props;
+    const { mode, text, text2, textHead, textFoot } = props;
 
     return (
         <Alert variant={mode} onClose={handleShow} dismissible>

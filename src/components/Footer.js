@@ -22,22 +22,22 @@ export const Footer = () => {
             <footer>
                 <Row className="justify-content-center ml-5 p-1" xs={4}>
                     <Col>
-                        <a href={urlLinkedin} target="_blank" rel="noopener">
+                        <a href={urlLinkedin} target="_blank" rel="noreferrer">
                             <Image className="img-footer" fluid src={linkedIn} rounded />
                         </a>
                     </Col>
                     <Col>
-                    <a href={urlTwitter} target="_blank" rel="noopener">
+                    <a href={urlTwitter} target="_blank" rel="noreferrer">
                             <Image className="img-footer" fluid src={twitter} rounded />
                         </a>
                     </Col>
                     <Col>
-                    <a href={urlInstagram} target="_blank" rel="noopener">
+                    <a href={urlInstagram} target="_blank" rel="noreferrer">
                             <Image className="img-footer" fluid src={instagram} rounded />
                         </a>
                     </Col>
                     <Col>
-                    <a href={urlOutlook} target="_blank" rel="noopener">
+                    <a href={urlOutlook} target="_blank" rel="noreferrer">
                             <Image className="img-footer" fluid src={outlook} rounded />
                         </a>
                     </Col>
