@@ -1,7 +1,10 @@
-import React, { useState, Fragment } from 'react'
+import React from 'react'
 import { Navigation } from './navigation/Navigation'
 
 import EmailProvider from './context/Provider'
+
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,13 +13,13 @@ import './App.css'
 
 function App() {
 
-  
+
   return (
-    <Fragment>
-      <EmailProvider>
-        <Navigation />
-      </EmailProvider>
-    </Fragment>
+    <EmailProvider>
+      <Header />
+      <Navigation />
+      <Footer />
+    </EmailProvider>
   )
 }
 

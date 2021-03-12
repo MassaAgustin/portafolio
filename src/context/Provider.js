@@ -3,26 +3,24 @@ import EmailContext from './Context'
 
 export default function EmailProvider({ children }) {
 
-    const [isSendEmail, setIsSendEmail] = useState(false)
-    const [bodyEmail, setBodyEmail] = useState('')
+    const [isNotify, setIsNotify] = useState(false)
+    const [bodyMessage, setBodyMessage] = useState('')
 
-    const sendEmail = async (body) => {
+    const sendMessage = async (type,title,footer) => {
 
-        setBodyEmail({
-            fullName: `${body.secondName} ${body.name}`,
-            email: `${body.email}@${body.domain}`,
-            description: body.description
+        setBodyMessage({
+            type: type,
+            title: title,
+            textFoot: footer
         })
-        setIsSendEmail(!isSendEmail)
+        setIsNotify(true)
     }
 
     const value = {
-        isSendEmail,
-        bodyEmail,
-        toggleSend: () => {
-            setIsSendEmail(!isSendEmail)
-        },
-        sendEmail
+        isNotify,
+        bodyMessage,
+        setIsNotify,
+        sendMessage
     }
     return (
         <EmailContext.Provider value={value}>

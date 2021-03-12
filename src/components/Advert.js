@@ -5,16 +5,16 @@ import EmailContext from '../context/Context'
 
 export const Advert = (props) => {
 
-    const { toggleSend } = useContext(EmailContext)
+    const { setIsNotify } = useContext(EmailContext)
 
-    const toggleShow = () => {
-        toggleSend()
+    const handleShow = () => {
+        setIsNotify(false)
     }
 
     const { mode, text, text2, textHead, textFoot, ...rest } = props;
 
     return (
-        <Alert variant={mode} onClose={toggleShow} dismissible>
+        <Alert variant={mode} onClose={handleShow} dismissible>
             {textHead && <Alert.Heading>{textHead}</Alert.Heading>}
             <p>
                 {text}

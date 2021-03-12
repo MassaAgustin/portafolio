@@ -3,23 +3,28 @@ import { useInputValue } from '../customHooks/useInputValue'
 
 import EmailContext from '../context/Context'
 
+import { expresiones } from '../assets/expresiones/expresiones'
+
 import { Container, Form, Row, Col, InputGroup, Button } from 'react-bootstrap'
 
 export const ContactForm = () => {
 
     const name = useInputValue('');
     const secondName = useInputValue('')
-    const email = useInputValue();
-    const domain = useInputValue('');
+    const email = useInputValue('');
     const description = useInputValue('');
 
     const [validName, setValidName] = useState(false)
     const [validEmail, setValidEmail] = useState(false)
-    const [validDomain, setValidDomain] = useState(false)
+    const [validDescription, setValidDescription] = useState(false)
 
-    let first = true
+    const { setIsNotify, sendMessage } = useContext(EmailContext)
 
-    const { isSendEmail, toggleSend, sendEmail } = useContext(EmailContext)
+
+    useEffect(() => {
+        
+        return () => setIsNotify(false)
+    }, [])
 
     const inputSimple = {
         md: 12,
@@ -33,7 +38,6 @@ export const ContactForm = () => {
 
     const nextFocus = (event, objId) => {
         if (event.code == 'Enter') {
-            console.log("presiono enter")
             const obj = document.getElementById(objId);
             if (obj)
                 obj.focus();
@@ -44,11 +48,11 @@ export const ContactForm = () => {
         return (
             <Row className="mb-3 justify-content-center" >
                 <Col {...inputDouble}>
-                    <Form.Control id="contactName" onKeyPress={(event) => nextFocus(event, 'contactSecond')} placeholder="First name" {...name} isValid={validName ? true : false} isInvalid={(validName || first) ? false : true} />
-                    <Form.Control.Feedback type="invalid">name is required</Form.Control.Feedback>
+                    <Form.Control name="name" id="contactName" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactSecond')} placeholder="First name" {...name} isValid={validName ? true : false} isInvalid={(!validName && name.value) ? true : false} />
+                    <Form.Control.Feedback type="invalid">Name is required</Form.Control.Feedback>
                 </Col>
                 <Col {...inputDouble}>
-                    <Form.Control id="contactSecond" onKeyPress={(event) => nextFocus(event, 'contactEmail')} placeholder="Second name" {...secondName} />
+                    <Form.Control name="secondName" id="contactSecond" onKeyPress={(event) => nextFocus(event, 'contactEmail')} placeholder="Second name" {...secondName} />
                 </Col>
             </Row>
         )
@@ -57,18 +61,9 @@ export const ContactForm = () => {
     const InputEmail = () => {
         return (
             <Row className="mb-3 justify-content-center" >
-                <Col {...inputDouble}>
-                    <Form.Control id="contactEmail" onKeyPress={(event) => nextFocus(event, 'contactDomain')} placeholder="Enter you email" {...email} isValid={validEmail ? true : false} isInvalid={(validEmail || first) ? false : true} />
-                    <Form.Control.Feedback type="invalid">mail does not exist</Form.Control.Feedback>
-                </Col>
-                <Col {...inputDouble}>
-                    <InputGroup >
-                        <InputGroup.Prepend>
-                            <InputGroup.Text>@</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <Form.Control id="contactDomain" onKeyPress={(event) => nextFocus(event, 'contactDescription')} type="email" placeholder="any.com" {...domain} isValid={validDomain ? true : false} isInvalid={(!validDomain || first) ? false : true} />
-                        <Form.Control.Feedback type="invalid">@{domain.value} not exist</Form.Control.Feedback>
-                    </InputGroup>
+                <Col {...inputSimple}>
+                    <Form.Control name="email" id="contactEmail" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactDescription')} placeholder="Enter you email" {...email} isValid={validEmail ? true : false} isInvalid={(!validEmail && email.value) ? true : false} />
+                    <Form.Control.Feedback type="invalid">Email is required</Form.Control.Feedback>
                 </Col>
             </Row>
         )
@@ -78,38 +73,54 @@ export const ContactForm = () => {
         return (
             <Row className="mb-3 justify-content-center" >
                 <Col {...inputSimple}>
-                    <Form.Control id="contactDescription" onKeyPress={(event) => nextFocus(event, 'contactButton')} as="textarea" rows={3} placeholder="Could be any reason" {...description} style={{ resize: "none" }} />
+                    <Form.Control name="description" id="contactDescription" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactButton')} as="textarea" rows={3} placeholder="Could be any reason" {...description} style={{ resize: "none" }} isValid={validDescription ? true : false} isInvalid={(!validDescription && description.value) ? true : false}/>
+                    <Form.Control.Feedback type="invalid">Description is required, and contains 30-300 characters</Form.Control.Feedback>
                 </Col>
             </Row>
         )
     }
 
-    const handleEmail = async () => {
-        const body = {
-            name: name.value,
-            secondName: secondName.value,
-            email: email.value,
-            domain: domain.value,
-            description: description.value
+    const validForm = () => {
+
+        setValidName(expresiones.name.test(name.value))
+
+        setValidEmail(expresiones.email.test(email.value))
+
+        setValidDescription(expresiones.description.test(description.value))
+    }
+
+    const clearInputs = () => {
+        name.reset()
+        secondName.reset()
+        email.reset()
+        description.reset()
+    }
+
+    const handleNotify = () => {
+
+        if (validName && validEmail && validDescription) {
+            sendMessage("success","Email sent succesfully","I will answer soon")
+            clearInputs()
+            validForm()
+        }else{
+            sendMessage("danger","Check inputs fields","ups")
+            validForm()
         }
-        if (name.value) setValidName(true); else setValidName(false)
-        if (email.value) setValidEmail(true); else setValidEmail(false)
-        if (domain.value.includes('com')) setValidDomain(true); else setValidDomain(false)
-        first = true
-        if (validName && validEmail && validDomain)
-            await sendEmail(body)
+        setTimeout(() => {
+            setIsNotify(false)
+        }, 5000)
     }
 
     return (
 
         <Container fluid className="mt-5 justify-content-center">
-            <Form>
+            <Form id="contactForm">
                 {InputName()}
                 {InputEmail()}
                 {InputDescription()}
                 <Row className="justify-content-center" >
                     <Col {...inputSimple}>
-                        <Button id="contactButton" onClick={handleEmail}>Send</Button>
+                        <Button id="contactButton" onClick={handleNotify}>Send</Button>
                     </Col>
                 </Row>
             </Form>
