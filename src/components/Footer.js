@@ -18,7 +18,7 @@ export const Footer = () => {
     const urlOutlook = "mailto:agus.massa@hotmail.com?subject=interview&body=Hello Agustin Massa,";
 
     return (
-        <Container fluid className="fixed-bottom mb-0 border-top justify-content-center bg-dark">
+        <Container fluid className="fixed-bottom mb-0 border-top justify-content-center bg-color">
             <footer>
                 <Row className="justify-content-center ml-5 p-1" xs={4}>
                     <Col>
