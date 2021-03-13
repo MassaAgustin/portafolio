@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Link } from 'react-router-dom'
 
@@ -6,29 +6,32 @@ import './NavBar.css'
 
 export const NavBar = () => {
 
-    const openForm = () => {
+    const [isOpen, setIsOpen] = useState(false)
 
-        const navLinks = document.querySelector(".nav-links")
-        const links = document.querySelectorAll(".nav-links li")
 
-        navLinks.classList.toggle("open");
-        links.forEach(link => {
-            link.classList.toggle("fade")
-        })
+    const toggleOpen = () => {
+        setIsOpen(!isOpen)
     }
 
+    const getClassLink = () => {
+        return isOpen ? "nav-links open":"nav-links"
+    }
+
+    const getClassLi = () => {
+        return isOpen ? "fade" : ""
+    }
     return (
         <nav>
-            <div className="menu" onClick={() => openForm()}>
+            <div className={"menu"} onClick={toggleOpen}>
                 <div className="line" />
                 <div className="line" />
                 <div className="line" />
             </div>
-            <ul className="nav-links">
+            <ul className={getClassLink()} onClick={toggleOpen}>
                 <li className="link-left">Agustin Massa</li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/projects">Projects</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+                <li className={getClassLi()}><Link to="/about">About</Link></li>
+                <li className={getClassLi()}><Link to="/projects">Projects</Link></li>
+                <li className={getClassLi()}><Link to="/contact">Contact</Link></li>
             </ul>
         </nav>
     )
