@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-loader{
+  height: 100vh;
+  width: 100%;
+  background-color: var(--primary-color);
+}
+
+.group-writter {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+
+}
+
+.group-writter .typewritter h3 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #ffffff; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+}
+
+.typewritter h3:nth-child(1) {
+  color: gold;
+  animation-delay: 1s;
+  animation: typing 0.1s steps(1,end) blink-caret .2s step-end;
+}
+
+
+
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #ffffff; }
+  }
