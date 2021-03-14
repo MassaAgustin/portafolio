@@ -1,0 +1,104 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container-loader{
+  position: relative;
+  height: 90vh;
+  width: 100%;
+  background-color: var(--primary-color);
+
+  .container-img {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: -12%;
+    left: -23%;
+    opacity: 1;
+    transform: scale(0.2);
+    animation: translateImage 1s ease-in-out 15.5s forwards;
+    img {
+      height: 10px;
+      width: 10px;
+      border: 10px solid white;
+      animation: appearImage 1s ease-in-out 15.5s forwards;
+    }
+  }
+}
+
+.main-loader{
+  position: absolute;
+  width: 70%;
+  height: 70vh;
+  animation: toRight 2s ease-in-out 7s forwards;
+  z-index: 2;
+}
+
+.var-highlight{
+  color: white;
+}
+.string-highlight{
+  color: gold;
+}
+
+.container-text {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  top: 13%;
+  left: 2%;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(1px)
+  ;
+}
+
+
+#typewriter{
+    position: absolute;
+    font-size: 1.5em;
+    margin: 0;
+    font-family: "Courier New";
+    z-index: 1;
+    &:after{
+      content: "|";
+      animation: blink 500ms linear infinite alternate;
+    }
+}
+
+@keyframes toRight{
+
+  to {
+    transform: translate(-35%,-57%) scale(.2);
+  }
+}
+
+@keyframes translateImage{
+  to {
+    left:20%;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes appearImage{
+  to {
+      height: 100%;
+      width: 60%;
+  }
+}
+
+@-webkit-keyframes blink{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
+@-moz-keyframes blink{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
+@keyframes blink{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}

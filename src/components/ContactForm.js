@@ -41,7 +41,7 @@ export const ContactForm = () => {
     const InputName = () => {
         return (
             <Row className="mb-3 justify-content-center" >
-                <Col {...inputDouble}>
+                <Col className="mb-3" {...inputDouble}>
                     <Form.Label>First name</Form.Label>
                     <Form.Control name="name" id="contactName" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactSecond')} placeholder="First name" {...name} isValid={validName ? true : false} isInvalid={(!validName && name.value) ? true : false} />
                     <Form.Control.Feedback type="invalid">Name is required</Form.Control.Feedback>

@@ -17,6 +17,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     margin-left: auto;
+    user-select: none;
 }
 
 .nav-links li a {
@@ -44,7 +45,7 @@ nav{
     transform: scale(1,1);
 }
 
-.nav-links li:nth-child(1){
+/* .nav-links li:nth-child(1){
     cursor: pointer;
     user-select: none;
     position: absolute;
@@ -52,7 +53,7 @@ nav{
     text-decoration: none;
     font-size: 1.5rem;
     left: 5%;
-}
+} */
 
 .nav-links li:nth-child(1):active{
     color: #ffffff;
@@ -92,7 +93,6 @@ nav{
         background: var(--secondary-color);
         height: 100vh;
         width: 100%;
-        background: var(--secondary-color);
         flex-direction: column;
         clip-path: circle(100px at 90% -10%);
         -webkit-clip-path: circle(100px at 90% -10%);
@@ -112,7 +112,11 @@ nav{
     }
 
     .nav-links li a {
-        font-size: 2rem;
+        font-size: 1.5rem;
+    }
+
+    li.fade{
+        opacity: 1;
     }
 
     .nav-links li:nth-child(1){
@@ -129,9 +133,6 @@ nav{
     }
     .nav-links li:nth-child(4){
         transition: all 0.5s easy 0.6s;
-        opacity: 1;
-    }
-    li.fade{
         opacity: 1;
     }
 }
