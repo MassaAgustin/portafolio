@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { MainImage } from '../assets/main.js'
 import me from '../assets/images/test1.jpg'
@@ -90,7 +90,7 @@ const MainLoader = (props) => {
     }, [])
 
     return (
-        <div className="container-loader">
+        <div className="container-loader" id="main">
             <div className="main-loader" onClick={props.onClick} >
                 <MainImage />
             </div>
@@ -106,8 +106,9 @@ const MainLoader = (props) => {
                         {'\n'}    avatar:
             </pre>
             <div className="container-img">
-                    <img src={me} alt="imagen de Agustin Massa" />
+                <img src={me} alt="imagen de Agustin Massa" />
             </div >
+
         </div >
     )
 }
