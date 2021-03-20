@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 
 import { MainImage } from '../assets/main.js'
 import me from '../assets/images/test1.jpg'
@@ -90,14 +90,15 @@ const MainLoader = (props) => {
     }, [])
 
     return (
-        <div className="container-loader" id="main">
-            <div className="main-loader" onClick={props.onClick} >
-                <MainImage />
-            </div>
-            <pre id="typewriter" className="container-text">
-                <span className="var-highlight">var </span>
+        <a href="#learning">
+            <div className="container-loader" id="main">
+                <div className="main-loader" onClick={props.onClick} >
+                    <MainImage />
+                </div>
+                <pre id="typewriter" className="container-text">
+                    <span className="var-highlight">var </span>
                     Person = {"{\n"}
-                        {'\n'}    name: <span className="string-highlight">{`'Agustin'`}</span>,
+                    {'\n'}    name: <span className="string-highlight">{`'Agustin'`}</span>,
                         {'\n'}    lastName: <span className="string-highlight">{`'Massa'`}</span>,
                         {'\n'}    age: <span className="string-highlight">{`23`}</span>,
                         {'\n'}    like:[{'\n'}<span className="string-highlight">        'Sweet food'</span>,
@@ -105,11 +106,11 @@ const MainLoader = (props) => {
                                     {'\n'}<span className="string-highlight">        'Cats'{'\n'}    </span>],
                         {'\n'}    avatar:
             </pre>
-            <div className="container-img">
-                <img src={me} alt="imagen de Agustin Massa" />
+                <div className="container-img">
+                    <img src={me} alt="imagen de Agustin Massa" />
+                </div >
             </div >
-
-        </div >
+        </a>
     )
 }
 

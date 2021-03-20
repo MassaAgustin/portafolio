@@ -16,6 +16,5 @@ export const AboutMe = () => {
             <HardSkill />
             <Goals />
         </Fragment>
-
     )
 }

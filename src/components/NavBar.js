@@ -21,7 +21,7 @@ export const NavBar = () => {
         return isOpen ? "fade" : ""
     }
     return (
-        <nav>
+        <nav id="navbar">
             <div className={"menu"} onClick={toggleOpen}>
                 <div className="line" />
                 <div className="line" />
