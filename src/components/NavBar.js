@@ -18,10 +18,10 @@ export const NavBar = () => {
     }
 
     const getClassLi = () => {
-        return isOpen ? "fade" : ""
+        return isOpen ? "" : "fade"
     }
     return (
-        <nav>
+        <nav id="navbar">
             <div className={"menu"} onClick={toggleOpen}>
                 <div className="line" />
                 <div className="line" />
@@ -29,9 +29,9 @@ export const NavBar = () => {
             </div>
             <ul className={getClassLink()} onClick={toggleOpen}>
                 {/* <li className="link-left">Agustin Massa</li> */}
-                <li className={getClassLi()}><Link to="/about">About</Link></li>
-                <li className={getClassLi()}><Link to="/projects">Projects</Link></li>
-                <li className={getClassLi()}><Link to="/contact">Contact</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/projects">Projects</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
             </ul>
         </nav>
     )

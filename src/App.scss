@@ -9,10 +9,14 @@
     --secondary-color: #272525;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 #logo{
     position: absolute;
-    height: 90%;
-    width: 90%;
+    height: 90vh;
+    width: 90vw;
     top: 50%;
     left: 50%;
     pointer-events: none;
@@ -165,6 +169,112 @@
     stroke-dashoffset: 233px;
     animation: line-anim 2s ease forwards 5.6s;
 }
+
+.translate {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    top: 10%;
+    margin: 5% 0 0 5%;
+    width: 15%;
+    height: 15%;
+    background-color: var(--secondary-color);
+    z-index: 99;
+    &::before {
+        content: '';
+        position: absolute;
+        height: 1rem;
+        width: 90vw;
+        background-color: var(--secondary-color);
+        left: 0;
+        top: 0;
+    }
+
+    a {
+        margin: 5%;
+        text-decoration: none;
+        color: white;
+
+        &:hover{
+            color: var(--primary-color);
+        }
+    }
+
+}
+
+.cardAbout{
+    z-index: -99;
+    height: 100vh;
+    width: 100vw;
+    .cardAbout__container {
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 0;
+        margin-bottom: 10%;
+        h1 {
+            margin: 1% auto 0 30%;
+            border: 1rem solid var(--secondary-color);
+            border-bottom: 0;
+        }
+
+        .cardAbout__body {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            border-bottom: 0.2rem solid var(--secondary-color);
+            margin: 3% auto auto 25%;
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px){
+    .translate {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        margin: 10% auto;
+    }
+
+    .cardAbout{
+
+        height: 100vh;
+        width: 100vw;
+
+        .cardAbout__container {
+            position: static;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h1 {
+                margin: 5% auto;
+                padding: 0;
+            }
+
+            .cardAbout__body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin: auto;
+                width: 80%;
+                border-top: 0.2rem solid var(--secondary-color);
+                p {
+                    margin: 5% auto;
+                }
+            }
+        }
+    }
+}
+
 
 @keyframes line-anim{
     to {
