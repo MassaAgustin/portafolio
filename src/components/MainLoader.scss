@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   height: 90vh;
-  width: 100%;
+  width: 100vw;
   background-color: var(--primary-color);
 
   perspective: 20rem;
@@ -33,7 +33,7 @@
 
 .main-loader{
   position: relative;
-  width: 70%;
+  width: 70vw;
   height: 70vh;
   animation: toRight 2s ease-in-out 7s forwards;
   z-index: 2;
@@ -73,7 +73,7 @@
 @keyframes toRight{
 
   to {
-    transform: translate(-60%,-71%) scale(.2);
+    transform: translate(-60%,-71%) scale(.1);
   }
 }
 
@@ -104,4 +104,41 @@
 @keyframes blink{
   0%{opacity: 0;}
   100%{opacity: 1;}
+}
+
+@media screen and (max-width: 768px){
+  .container-text {
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%);
+    filter: none;
+  }
+
+  #typewriter{
+    font-size: 1rem;
+  }
+
+  .main-loader{
+    animation: toRight 2s ease-in-out 7s forwards;
+  }
+
+  @keyframes translateImage{
+    50% {
+      transform: translateX(200%) rotateX(-120deg);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateX(80%) translateY(70%) ;
+      height: 40%;
+      width: 10%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes toRight{
+    to {
+      transform: translate(-45%,-71%) scale(.2);
+    }
+  }
 }

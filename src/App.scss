@@ -15,8 +15,8 @@ html {
 
 #logo{
     position: absolute;
-    height: 90%;
-    width: 90%;
+    height: 90vh;
+    width: 90vw;
     top: 50%;
     left: 50%;
     pointer-events: none;
@@ -207,6 +207,7 @@ html {
 .cardAbout{
     z-index: -99;
     height: 100vh;
+    width: 100vw;
     .cardAbout__container {
         position: sticky;
         display: flex;
@@ -224,8 +225,52 @@ html {
             display: flex;
             flex-direction: column;
             width: 70%;
-            border-bottom: 2px solid var(--secondary-color);
+            border-bottom: 0.2rem solid var(--secondary-color);
             margin: 3% auto auto 25%;
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px){
+    .translate {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        margin: 10% auto;
+    }
+
+    .cardAbout{
+
+        height: 100vh;
+        width: 100vw;
+
+        .cardAbout__container {
+            position: static;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h1 {
+                margin: 5% auto;
+                padding: 0;
+            }
+
+            .cardAbout__body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin: auto;
+                width: 80%;
+                border-top: 0.2rem solid var(--secondary-color);
+                p {
+                    margin: 5% auto;
+                }
+            }
         }
     }
 }
