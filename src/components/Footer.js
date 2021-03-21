@@ -18,32 +18,28 @@ export const Footer = () => {
     const urlOutlook = "mailto:agus.massa@hotmail.com?subject=interview&body=Hello Agustin Massa,";
 
     return (
-        <Container fluid className="fixed-bottom mb-0 border-top justify-content-center bg-color">
-            <footer>
-                <Row className="justify-content-center ml-5 p-1" xs={4}>
-                    <Col>
-                        <a href={urlLinkedin} target="_blank" rel="noreferrer">
-                            <Image className="img-footer" fluid src={linkedIn} rounded />
-                        </a>
-                    </Col>
-                    <Col>
-                    <a href={urlTwitter} target="_blank" rel="noreferrer">
-                            <Image className="img-footer" fluid src={twitter} rounded />
-                        </a>
-                    </Col>
-                    <Col>
-                    <a href={urlInstagram} target="_blank" rel="noreferrer">
-                            <Image className="img-footer" fluid src={instagram} rounded />
-                        </a>
-                    </Col>
-                    <Col>
-                    <a href={urlOutlook} target="_blank" rel="noreferrer">
-                            <Image className="img-footer" fluid src={outlook} rounded />
-                        </a>
-                    </Col>
-                </Row>
-            </footer>
-        </Container>
+        <div className="d-flex justify-content-between bg-color">
+            <div className="p-2 ml-5 col-example text-left">
+                <a href={urlLinkedin} target="_blank" rel="noreferrer">
+                    <Image className="img-footer" fluid src={linkedIn} rounded />
+                </a>
+            </div>
+            <div className="p-2 col-example text-left">
+                <a href={urlTwitter} target="_blank" rel="noreferrer">
+                    <Image className="img-footer" fluid src={twitter} rounded />
+                </a>
+            </div>
+            <div className="p-2 col-example text-left">
+                <a href={urlInstagram} target="_blank" rel="noreferrer">
+                    <Image className="img-footer" fluid src={instagram} rounded />
+                </a>
+            </div>
+            <div className="p-2 mr-5 col-example text-left">
+                <a href={urlOutlook} target="_blank" rel="noreferrer">
+                    <Image className="img-footer" fluid src={outlook} rounded />
+                </a>
+            </div>
+        </div>
 
     )
 }

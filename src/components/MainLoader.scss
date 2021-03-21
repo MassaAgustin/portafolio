@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   height: 90vh;
-  width: 100vw;
+  width: 100%;
   background-color: var(--primary-color);
 
   perspective: 20rem;
@@ -23,7 +23,7 @@
     left: 12%;
     bottom: 31%;
     opacity: 0;
-    animation: translateImage 2s ease-in-out 15.04s forwards;
+    animation: translateImage 2s ease-in-out 17s forwards;
 
     img {
       border: 4px solid white;
@@ -54,8 +54,8 @@
   left: 2%;
   pointer-events: all;
   z-index: 1;
-  filter: blur(1px)
-  ;
+  filter: blur(1px);
+  animation: focusJson 1s ease-in-out 7s forwards;
 }
 
 #typewriter{
@@ -104,6 +104,12 @@
 @keyframes blink{
   0%{opacity: 0;}
   100%{opacity: 1;}
+}
+
+@keyframes focusJson{
+  to{
+    filter: none;
+  }
 }
 
 @media screen and (max-width: 768px){
