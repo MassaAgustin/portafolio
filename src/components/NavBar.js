@@ -17,9 +17,6 @@ export const NavBar = () => {
         return isOpen ? "nav-links open":"nav-links"
     }
 
-    const getClassLi = () => {
-        return isOpen ? "" : "fade"
-    }
     return (
         <nav id="navbar">
             <div className={"menu"} onClick={toggleOpen}>

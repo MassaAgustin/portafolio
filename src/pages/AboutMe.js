@@ -1,4 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { motion } from 'framer-motion'
+import { motionEffects } from '../assets/transitions/pageTransition'
+
 import MainLoader from '../components/MainLoader'
 import { Learning } from '../components/Learning'
 import { SoftSkill } from '../components/SoftSkill'
@@ -8,13 +11,13 @@ import { Translate } from '../components/Translate'
 
 export const AboutMe = () => {
     return (
-        <Fragment>
+        <motion.div {...motionEffects}>
             <MainLoader />
             <Translate />
             <Learning />
             <SoftSkill />
             <HardSkill />
             <Goals />
-        </Fragment>
+        </motion.div>
     )
 }

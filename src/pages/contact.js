@@ -1,13 +1,15 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { motion } from 'framer-motion'
+import { motionEffects } from '../assets/transitions/pageTransition'
 
 import { ContactForm } from '../components/ContactForm'
 
 export const Contact = () => {
     return (
-        <Fragment>
-            <section>
+        <motion.div {...motionEffects}>
+            <section style={{height:'100vh'}}>
                 <ContactForm />
             </section>
-        </Fragment>
+        </motion.div>
     )
 }
