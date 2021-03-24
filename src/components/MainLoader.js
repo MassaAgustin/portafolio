@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 
 import { MainImage } from '../assets/main.js'
 import me from '../assets/images/test1.jpg'
@@ -10,6 +10,8 @@ import './MainLoader.scss'
 
 
 const MainLoader = (props) => {
+
+    const [rotate, setRotate] = useState(false)
 
     useEffect(() => {
 
@@ -89,12 +91,22 @@ const MainLoader = (props) => {
 
     }, [])
 
+    const toggleRotate = () => {
+        return setRotate(!rotate)
+    }
+
+    const getClassImg = () => {
+        return rotate ? "rotate" : ""
+    }
+
     return (
-        <a href="#learning">
             <div className="container-loader" id="main">
-                <div className="main-loader" onClick={props.onClick} >
-                    <MainImage />
-                </div>
+            {rotate && <h2 className="appear-text">Desliza!</h2>}
+                <a href="#learning">
+                    <div className="main-loader" onClick={props.onClick} >
+                        <MainImage />
+                    </div>
+                </a>
                 <pre id="typewriter" className="container-text">
                     <span className="var-highlight">var </span>
                     Person = {"{\n"}
@@ -107,10 +119,9 @@ const MainLoader = (props) => {
                         {'\n'}    avatar:
             </pre>
                 <div className="container-img">
-                    <img src={me} alt="imagen de Agustin Massa" />
+                    <img className={getClassImg()} src={me} alt="imagen de Agustin Massa" onClick={toggleRotate} />
                 </div >
-            </div >
-        </a>
+            </div>
     )
 }
 
