@@ -29,6 +29,15 @@ html {
     padding-left: 0.5em;
 }
 
+.card-custom {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+
+    small {
+        color: var(--primary-color);
+    }
+}
+
 #logo{
     position: absolute;
     height: 90vh;

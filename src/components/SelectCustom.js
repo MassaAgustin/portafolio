@@ -4,6 +4,8 @@ import { Container, Row, Col, Alert, OverlayTrigger, Popover, Card } from 'react
 
 import EmailContext from '../context/Context'
 
+import imagePantry from '../assets/icons/iconPantry.png'
+
 export const SelectCustom = () => {
 
     const { labels } = useContext(EmailContext)
@@ -155,12 +157,21 @@ export const SelectCustom = () => {
 
                 if (project.skills.includes(select))
                     return (
-                        <Row className="justify-content-center align-items-center">
-                            <Col md={6}>
-                                <Card>
-                                    <Card.Title>{project.name}</Card.Title>
-                                    <Card.Subtitle>{project.about}</Card.Subtitle>
-                                    <Card.Footer>Usamos: {project.skills.map(skill => `${skill}; `)}</Card.Footer>
+                        <Row className="justify-content-center">
+                            <Col md={6} >
+                                <Card className="card-custom" >
+                                    <Card.Header>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <Card.Title style={{ textAlign: 'center' }}>{project.name}</Card.Title>
+                                        <Card.Text>{project.about}</Card.Text>
+                                        <Card.Img src={imagePantry} alt={`imagen del proyecto ${project.name}`} />
+                                    </Card.Body>
+                                    <Card.Footer style={{ position: 'absolute', bottom: '2%', width: '95%' }}>
+                                        <small>
+                                            Usamos: {project.skills.map(skill => `${skill}; `)}
+                                        </small>
+                                    </Card.Footer>
                                 </Card>
                             </Col>
                         </Row>
