@@ -57,7 +57,12 @@ export const esp = {
     se que no se recomienda en lo absoluto, aún asi trato de esforzarme para dar todo lo mejor en mi primer empleo IT.
     Si llegaste hasta acá, gracias por escucharme y espero que te pueda ayudar en lo que sea =)`,
 
-
+    /**************************************************Projects Page**********************************************************************/
+    searchSkill: "Tipea para buscar una habilidad",
+    skillSearch: "Buscador de habilidades",
+    high: 'Alto',
+    medium: 'Medio',
+    low: 'Bajo',
     /**************************************************Contact Page**********************************************************************/
 
     //****************Contact Component****************

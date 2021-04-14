@@ -58,7 +58,13 @@ export const eng = {
      se que no se recomienda en lo absoluto, aún asi trato de esforzarme para dar todo lo mejor en mi primer empleo IT.
      Si llegaste hasta acá, gracias por escucharme y espero que te pueda ayudar en lo que sea =)` ,
 
-     /**************************************************Contact Page**********************************************************************/
+    /**************************************************Projects Page**********************************************************************/
+    searchSkill: "Type to search skill...",
+    skillSearch: "Skill's Search",
+    high: 'High',
+    medium: 'Medium',
+    low: 'Low',
+    /**************************************************Contact Page**********************************************************************/
 
     //****************Contact Component****************
     firstNameI: 'First Name',

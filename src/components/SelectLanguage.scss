@@ -11,6 +11,11 @@
     width: 4rem;
     height: 4rem;
     z-index: 10;
+    transition: animation linear 2000ms;
+
+    &.toLeft {
+        animation: linear 200ms toLeft forwards;
+    }
 
     button {
         display: inline-block;
@@ -27,5 +32,11 @@
             box-shadow: 0px 37px 20px -15px rgba(0, 0, 0, 0.2);
             transform: translate(0px, -10px);
         }
+    }
+}
+
+@keyframes toLeft {
+    to {
+        left: 3%;
     }
 }
