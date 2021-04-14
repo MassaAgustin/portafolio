@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext } from 'react'
+import React, { Fragment, useContext } from 'react'
 
 import EmailContext from '../context/Context'
 
@@ -7,13 +7,6 @@ import './SelectLanguage.scss'
 export const SelectLanguage = () => {
 
     const { language, selectLanguage } = useContext(EmailContext)
-
-    useEffect(() => {
-        if (language === 'en')
-            document.getElementById('btn-es').style.background = 'red'
-        if (language === 'es')
-            document.getElementById('btn-en').style.background = 'blue'
-    }, [])
 
     return (
         <Fragment>

@@ -10,6 +10,12 @@ export const SoftSkill = () => {
         <div className="cardAbout" id="softSkill">
             <div className="cardAbout__container">
                 <h1>{labels.soft}</h1>
+                <div className="cardAbout__body">
+                    <strong>{labels.subTitleSoftOne}</strong>
+                    <p>{labels.softParagraphOne}</p>
+                    <strong>{labels.subTitleSoftTwo}</strong>
+                    <p>{labels.softParagraphTwo}</p>
+                </div>
             </div>
         </div>
     )

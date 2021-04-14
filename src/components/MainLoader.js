@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import { MainImage } from '../assets/main.js'
 import me from '../assets/images/test1.jpg'
+
+import EmailContext from '../context/Context'
 
 import './MainLoader.scss'
 
 const MainLoader = (props) => {
 
     const [rotate, setRotate] = useState(false)
+
+    const { labels } = useContext(EmailContext)
 
     const toggleRotate = () => {
         return setRotate(!rotate)
@@ -27,13 +31,13 @@ const MainLoader = (props) => {
                 </a>
                 <pre id="typewriter" className="container-text">
                     <span className="var-highlight">var </span>
-                    Person = {"{\n"}
-                    {'\n'}    name: <span className="string-highlight">{`'Agustin'`}</span>,
-                        {'\n'}    lastName: <span className="string-highlight">{`'Massa'`}</span>,
-                        {'\n'}    age: <span className="string-highlight">{`23`}</span>,
-                        {'\n'}    like:[{'\n'}<span className="string-highlight">        'Sweet food'</span>,
+                    {labels.person} = {"{\n"}
+                    {'\n'}    {labels.name}: <span className="string-highlight">{`'Agustin'`}</span>,
+                        {'\n'}    {labels.lastName}: <span className="string-highlight">{`'Massa'`}</span>,
+                        {'\n'}    {labels.age}: <span className="string-highlight">23</span>,
+                        {'\n'}    {labels.like}:[{'\n'}<span className="string-highlight">        '{labels.food}'</span>,
                                     {'\n'}<span className="string-highlight">        'Mate'</span>,
-                                    {'\n'}<span className="string-highlight">        'Cats'{'\n'}    </span>],
+                                    {'\n'}<span className="string-highlight">        '{labels.cat}'{'\n'}    </span>],
                         {'\n'}    avatar:
             </pre>
                 <div className="container-img">

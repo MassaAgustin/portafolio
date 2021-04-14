@@ -18,7 +18,7 @@ export const ContactForm = () => {
     const [validEmail, setValidEmail] = useState(false)
     const [validDescription, setValidDescription] = useState(false)
 
-    const { setIsNotify, sendMessage } = useContext(EmailContext)
+    const { setIsNotify, sendMessage, labels } = useContext(EmailContext)
 
     const inputSimple = {
         md: 12,
@@ -42,13 +42,13 @@ export const ContactForm = () => {
         return (
             <Row className="mb-3 justify-content-center" >
                 <Col className="mb-3" {...inputDouble}>
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control name="name" id="contactName" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactSecond')} placeholder="First name" {...name} isValid={validName ? true : false} isInvalid={(!validName && name.value) ? true : false} />
-                    <Form.Control.Feedback type="invalid">Name is required</Form.Control.Feedback>
+                    <Form.Label>{labels.firstNameI}</Form.Label>
+                    <Form.Control name="name" id="contactName" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactSecond')} placeholder={labels.firstNameI} {...name} isValid={validName ? true : false} isInvalid={(!validName && name.value) ? true : false} />
+                    <Form.Control.Feedback type="invalid">{labels.firstNameFeedback}</Form.Control.Feedback>
                 </Col>
                 <Col {...inputDouble}>
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control name="secondName" id="contactSecond" onKeyPress={(event) => nextFocus(event, 'contactEmail')} placeholder="Second name" {...secondName} />
+                    <Form.Label>{labels.secondNameI}</Form.Label>
+                    <Form.Control name="secondName" id="contactSecond" onKeyPress={(event) => nextFocus(event, 'contactEmail')} placeholder={labels.secondNameI} {...secondName} />
                 </Col>
             </Row>
         )
@@ -58,9 +58,9 @@ export const ContactForm = () => {
         return (
             <Row className="mb-3 justify-content-center" >
                 <Col {...inputSimple}>
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control name="email" id="contactEmail" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactDescription')} placeholder="Enter you email" {...email} isValid={validEmail ? true : false} isInvalid={(!validEmail && email.value) ? true : false} />
-                    <Form.Control.Feedback type="invalid">Email is required</Form.Control.Feedback>
+                    <Form.Label>{labels.email}</Form.Label>
+                    <Form.Control name="email" id="contactEmail" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactDescription')} placeholder={labels.email} {...email} isValid={validEmail ? true : false} isInvalid={(!validEmail && email.value) ? true : false} />
+                    <Form.Control.Feedback type="invalid">{labels.emailFeedback}</Form.Control.Feedback>
                 </Col>
             </Row>
         )
@@ -70,9 +70,9 @@ export const ContactForm = () => {
         return (
             <Row className="mb-3 justify-content-center" >
                 <Col {...inputSimple}>
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control name="description" id="contactDescription" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactButton')} as="textarea" rows={3} placeholder="Could be any reason" {...description} style={{ resize: "none" }} isValid={validDescription ? true : false} isInvalid={(!validDescription && description.value) ? true : false}/>
-                    <Form.Control.Feedback type="invalid">Description is required, and contains 30-300 characters</Form.Control.Feedback>
+                    <Form.Label>{labels.description}</Form.Label>
+                    <Form.Control name="description" id="contactDescription" onBlur={validForm} onKeyUp={validForm} onKeyPress={(event) => nextFocus(event, 'contactButton')} as="textarea" rows={3} placeholder={labels.reason} {...description} style={{ resize: "none" }} isValid={validDescription ? true : false} isInvalid={(!validDescription && description.value) ? true : false}/>
+                    <Form.Control.Feedback type="invalid">{labels.descriptionFeedback}</Form.Control.Feedback>
                 </Col>
             </Row>
         )
@@ -97,11 +97,11 @@ export const ContactForm = () => {
     const handleNotify = () => {
 
         if (validName && validEmail && validDescription) {
-            sendMessage("success","Email sent succesfully","I will answer soon")
+            sendMessage("success",labels.ok,labels.answer)
             clearInputs()
             validForm()
         }else{
-            sendMessage("danger","Check inputs fields","ups")
+            sendMessage("danger",labels.error,"ups")
             validForm()
         }
         setTimeout(() => {
@@ -118,7 +118,7 @@ export const ContactForm = () => {
                 {InputDescription()}
                 <Row className="justify-content-center" >
                     <Col {...inputSimple}>
-                        <Button id="contactButton" onClick={handleNotify}>Send</Button>
+                        <Button id="contactButton" onClick={handleNotify}>{labels.send}</Button>
                     </Col>
                 </Row>
             </Form>
