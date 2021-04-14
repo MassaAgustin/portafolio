@@ -170,6 +170,43 @@ html {
     animation: line-anim 2s ease forwards 5.6s;
 }
 
+$danger-color-404: rgb(211, 69, 69);
+
+.notFound {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+        position: relative;
+        border: 0.5rem solid $danger-color-404;
+
+        &::before, aft {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 20%;
+            background-color: transparentize($color: $danger-color-404, $amount: 0.7);
+            transform: rotateZ(10deg) translateY(-50%);
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background-color: transparentize($color: $danger-color-404, $amount: 0.7);
+            transform: rotateZ(-10deg) translateY(-50%);
+        }
+    }
+}
+
 .translate {
     position: sticky;
     display: flex;

@@ -3,8 +3,6 @@ import { Navigation } from './navigation/Navigation'
 
 import EmailProvider from './context/Provider'
 
-import { Footer } from './components/Footer'
-
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss'
@@ -12,11 +10,9 @@ import './App.scss'
 
 function App() {
 
-
   return (
     <EmailProvider>
       <Navigation />
-      <Footer />
     </EmailProvider>
   )
 }

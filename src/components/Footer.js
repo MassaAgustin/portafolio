@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 
 import linkedIn from '../assets/icons/linkedin.svg'
 import instagram from '../assets/icons/instagram.svg'
