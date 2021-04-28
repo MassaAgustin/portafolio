@@ -1,18 +1,22 @@
 {
   "files": {
-    "main.css": "/home/static/css/main.13f143f1.chunk.css",
-    "main.js": "/home/static/js/main.1923a19c.chunk.js",
-    "main.js.map": "/home/static/js/main.1923a19c.chunk.js.map",
+    "main.css": "/home/static/css/main.6c99372f.chunk.css",
+    "main.js": "/home/static/js/main.b15d9969.chunk.js",
+    "main.js.map": "/home/static/js/main.b15d9969.chunk.js.map",
     "runtime-main.js": "/home/static/js/runtime-main.fc663137.js",
     "runtime-main.js.map": "/home/static/js/runtime-main.fc663137.js.map",
     "static/css/2.150d169a.chunk.css": "/home/static/css/2.150d169a.chunk.css",
-    "static/js/2.6ba307fe.chunk.js": "/home/static/js/2.6ba307fe.chunk.js",
-    "static/js/2.6ba307fe.chunk.js.map": "/home/static/js/2.6ba307fe.chunk.js.map",
+    "static/js/2.af5771f8.chunk.js": "/home/static/js/2.af5771f8.chunk.js",
+    "static/js/2.af5771f8.chunk.js.map": "/home/static/js/2.af5771f8.chunk.js.map",
     "index.html": "/home/index.html",
     "static/css/2.150d169a.chunk.css.map": "/home/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.13f143f1.chunk.css.map": "/home/static/css/main.13f143f1.chunk.css.map",
-    "static/js/2.6ba307fe.chunk.js.LICENSE.txt": "/home/static/js/2.6ba307fe.chunk.js.LICENSE.txt",
+    "static/css/main.6c99372f.chunk.css.map": "/home/static/css/main.6c99372f.chunk.css.map",
+    "static/js/2.af5771f8.chunk.js.LICENSE.txt": "/home/static/js/2.af5771f8.chunk.js.LICENSE.txt",
+    "static/media/iconDoi.03cc60e9.jpg": "/home/static/media/iconDoi.03cc60e9.jpg",
     "static/media/iconPantry.1aee6faf.png": "/home/static/media/iconPantry.1aee6faf.png",
+    "static/media/iconPoseidon.0af7d8e0.png": "/home/static/media/iconPoseidon.0af7d8e0.png",
+    "static/media/iconPoseidonOld.48958a07.png": "/home/static/media/iconPoseidonOld.48958a07.png",
+    "static/media/iconRestaurant.23118273.png": "/home/static/media/iconRestaurant.23118273.png",
     "static/media/instagram.75dae001.svg": "/home/static/media/instagram.75dae001.svg",
     "static/media/linkedin.ea507d35.svg": "/home/static/media/linkedin.ea507d35.svg",
     "static/media/outlook.5fa08d62.svg": "/home/static/media/outlook.5fa08d62.svg",
@@ -22,8 +26,8 @@
   "entrypoints": [
     "static/js/runtime-main.fc663137.js",
     "static/css/2.150d169a.chunk.css",
-    "static/js/2.6ba307fe.chunk.js",
-    "static/css/main.13f143f1.chunk.css",
-    "static/js/main.1923a19c.chunk.js"
+    "static/js/2.af5771f8.chunk.js",
+    "static/css/main.6c99372f.chunk.css",
+    "static/js/main.b15d9969.chunk.js"
   ]
 }
