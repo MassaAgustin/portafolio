@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react'
 
-import { Container, Row, Col, Alert, OverlayTrigger, Popover, Card } from 'react-bootstrap'
+import { Container, Row, Col, Alert, OverlayTrigger, Popover } from 'react-bootstrap'
 
 import EmailContext from '../context/Context'
 
+import { CustomCard } from './CustomCard'
+
 import imagePantry from '../assets/icons/iconPantry.png'
+import imageRestaurant from '../assets/icons/iconRestaurant.png'
+import imageDoi from '../assets/icons/iconDoi.jpg'
+import imagePoseidon from '../assets/icons/iconPoseidon.png'
+import imagePoseidonOld from '../assets/icons/iconPoseidonOld.png'
 
 export const SelectCustom = () => {
 
@@ -32,34 +38,39 @@ export const SelectCustom = () => {
 
     const projects = [
         {
-            name: 'Poseidon v2',
+            name: 'Poseidon Cloud',
             skills: ['React', 'MongoDB', 'Express', 'Node', 'JavaScript'],
-            about: `Poseidon es un sistema para la gestion de alquileres de sombrillas y estacionamientos, 
-            junto a analisis de datos para una mejor distribucion del dinero. Con los datos en la nube`
+            about: `Poseidon es un sistema para la gestion de alquileres de sombrillas y estacionamientos,
+            junto a analisis de datos para una mejor distribucion del dinero. Con los datos en la nube`,
+            image: imagePoseidon
         },
         {
             name: 'Doi',
             skills: ['React', 'Express', 'Redux', 'MongoDB', 'Node', 'SASS', 'JavaScript'],
             about: `Doi es un sistema para la gestion de compra y venta de software, la intencion es que sirva como mediador
-            entre estos, y proveer informacion al respecto junto a una interfaz didactica y facil para el que no este acostumbrado`
+            entre estos, y proveer informacion al respecto junto a una interfaz didactica y facil para el que no este acostumbrado`,
+            image: imageDoi
         },
         {
             name: 'Resto',
             skills: ['Redux', 'React Native', 'Json-server', 'JavaScript'],
-            about: `Resto es un sistema para la gestion de reservaciones de un restaurante, acompañado los menus, 
-            comentarios y lista de platos favoritos! Y informacion sobre el restaurante!`
+            about: `Resto es un sistema para la gestion de reservaciones de un restaurante, acompañado los menus,
+            comentarios y lista de platos favoritos! Y informacion sobre el restaurante!`,
+            image: imageRestaurant
         },
         {
             name: 'My Pantry',
             skills: ['React Native', 'JavaScript', 'Redux'],
             about: `My Pantry es un sistema para la gestion de alimentos en nuestra despensa, su objetivo es mantener un orden
-            a la hora de reabastecer los productos del usuario, con un facil acceso y guardar sus recetas favoritas!`
+            a la hora de reabastecer los productos del usuario, con un facil acceso y guardar sus recetas favoritas!`,
+            image: imagePantry
         },
         {
-            name: 'Poseidon v1',
+            name: 'Poseidon Local',
             skills: ['PostgreSQL', 'Java'],
-            about: `Poseidon es un sistema para la gestion de alquileres de sombrillas y estacionamientos, 
-            junto a analisis de datos para una mejor distribucion del dinero. Con los datos locales`
+            about: `Poseidon es un sistema para la gestion de alquileres de sombrillas y estacionamientos,
+            junto a analisis de datos para una mejor distribucion del dinero. Con los datos locales`,
+            image: imagePoseidonOld
         }
     ]
 
@@ -129,7 +140,7 @@ export const SelectCustom = () => {
 
     return (
         <Container fluid className="mt-3 justify-content-center 80vw">
-            <Row>
+            <Row className="mb-0" id="last-row">
                 <Col md={2}>
                     <OverlayTrigger trigger="hover" placement="right" overlay={popoverHigh} >
                         <Alert variant='primary' style={{ cursor: 'pointer' }}>{labels.high}</Alert>
@@ -142,41 +153,32 @@ export const SelectCustom = () => {
                     </OverlayTrigger>
                 </Col>
                 <Col md={{ span: 6, offset: 1 }}>
-                    <label htmlFor="homeList" className="form-label">{labels.skillSearch}</label>
-                    <input value={select} onChange={handleChangeSelect} className="form-control" list="skillListOption" id="homeList" placeholder={labels.searchSkill} />
+                    <input value={select} onChange={handleChangeSelect} className="form-control" list="skillListOption" id="homeList" placeholder={labels.searchSkill} style={{ height: '3rem'}}/>
                     <datalist id="skillListOption" >
                         {skills.map((skill, index) => {
                             return <option key={`${skill}-${index}`} value={skill.name} />
                         })}
                     </datalist>
                     {select && <Alert variant={levelSelected}>{select}</Alert>}
+                    {projects.map(project => {
+
+                        if (project.skills.includes(select))
+                            return (
+                                <Row>
+                                    <Col md={6} >
+                                        <CustomCard
+                                            title={project.name}
+                                            body={project.about}
+                                            skills={project.skills}
+                                            image={project.image}
+                                        />
+                                    </Col>
+                                </Row>
+                            )
+                        return undefined
+                    })}
                 </Col>
             </Row>
-
-            {projects.map(project => {
-
-                if (project.skills.includes(select))
-                    return (
-                        <Row className="justify-content-center">
-                            <Col md={6} >
-                                <Card className="card-custom" >
-                                    <Card.Header>
-                                    </Card.Header>
-                                    <Card.Body>
-                                        <Card.Title style={{ textAlign: 'center' }}>{project.name}</Card.Title>
-                                        <Card.Text>{project.about}</Card.Text>
-                                        <Card.Img src={imagePantry} alt={`imagen del proyecto ${project.name}`} />
-                                    </Card.Body>
-                                    <Card.Footer style={{ position: 'absolute', bottom: '2%', width: '95%' }}>
-                                        <small>
-                                            Usamos: {project.skills.map(skill => `${skill}; `)}
-                                        </small>
-                                    </Card.Footer>
-                                </Card>
-                            </Col>
-                        </Row>
-                    )
-            })}
 
 
         </Container>
